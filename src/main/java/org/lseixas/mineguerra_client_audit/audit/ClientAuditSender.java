@@ -25,11 +25,12 @@ public final class ClientAuditSender {
 
     private static void send(MinecraftClient client) {
         if (!ClientPlayNetworking.canSend(ClientAuditPacket.ID)) {
-            MineguerraClientAuditMod.LOGGER.debug(
-                    "Servidor nao declarou canal {}; handshake nao enviado",
+            // Paper pode nao anunciar o canal no formato CustomPayload; enviar mesmo assim
+            // porque registerOutgoingPluginChannel costuma bastar para plugin messages.
+            MineguerraClientAuditMod.LOGGER.warn(
+                    "Canal {} nao anunciado via CustomPayload; enviando handshake mesmo assim",
                     ClientAuditCodec.CHANNEL
             );
-            return;
         }
 
         try {
