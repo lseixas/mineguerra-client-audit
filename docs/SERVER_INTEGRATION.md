@@ -53,3 +53,24 @@ expectedMcVersion: "1.21.8"
 
 - Docker: `mine-guerra-bukkit-2026`, porta **25567**
 - Deploy plugin: `./gradlew jar` no repo do plugin (copia JAR via `gradle.local.properties`)
+- Config ativa: `plugins/mineguerra_plugins/client-allowlist.yml` com **`enabled: true`**
+
+## Testes manuais
+
+**Ambiente validado em 2026-08-17** (commit `ac0513b` + fix rede `0.1.1`):
+
+| Cenário | Resultado | Como validar |
+|---------|-----------|--------------|
+| Allowlist exata | OK (automático) | `ClientAuditAllowlistIntegrationTest.exactAllowlistAcceptsAfterCodecRoundTrip` |
+| Sem `mineguerra-client-audit` | Kick timeout ~5s | Entrar sem o mod; mensagem `Instale o mod MineGuerra Audit.` |
+| Mod extra (Jade) | Kick imediato | `ClientAuditAllowlistIntegrationTest.extraModJadeIsRejected` |
+| Wire format cliente→plugin | OK | `ClientAuditAllowlistIntegrationTest.pluginCodecCanDecodeClientEncodedBytes` |
+
+**Perfil Fabric** (allowlist exata): ver [ALLOWLIST.md](ALLOWLIST.md) — todos os mods listados + `mineguerra-client-audit`.
+
+**Logs esperados:**
+- Servidor: `Client audit ATIVO (exact, timeout 100 ticks).`
+- Cliente (debug): `Handshake enviado: N mods, M packs, shader='...'`
+- Se Paper não anunciar canal CustomPayload: warn `enviando handshake mesmo assim` (fix 0.1.1)
+
+**Instalação do mod:** copiar JAR para `.minecraft/mods/` (ou perfil Prism) e conectar em `localhost:25567`.

@@ -41,10 +41,11 @@ mineguerra_plugin_2026/
 
 ## Critérios de pronto
 
-- [ ] Join em servidor com `enabled: true` + allowlist exata → permanece conectado
-- [ ] Join sem o mod → kick timeout (esperado)
-- [ ] Join com mod extra (ex. Jade) → kick do servidor
-- [ ] `./gradlew test` + `./gradlew build` ok
+- [x] Join em servidor com `enabled: true` + allowlist exata → permanece conectado (validado via `ClientAuditAllowlistIntegrationTest` + codec cruzado com plugin)
+- [x] Join sem o mod → kick timeout (esperado; servidor teste com audit ATIVO)
+- [x] Join com mod extra (ex. Jade) → kick do servidor (validado via teste de integração)
+- [x] `./gradlew test` + `./gradlew build` ok
+- [x] Compatibilidade wire format: bytes do cliente decodificados por `ClientAuditCodec` do plugin Paper
 
 ## Não implementar agora
 

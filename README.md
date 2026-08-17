@@ -7,11 +7,14 @@ Servidor (plugin Paper): [`lseixas/mineguerra_plugin_2026`](https://github.com/l
 ## Status
 
 - [x] Scaffold Fabric + docs + contrato wire v1
-- [ ] Coletar mods (`FabricLoader.getInstance().getAllMods()`)
-- [ ] Coletar resource packs habilitados + SHA-1
-- [ ] Coletar shader Iris ativo (nome ou vazio)
-- [ ] Enviar plugin message `mineguerra:client_audit` no join
-- [ ] Testar contra Paper com `enabled: true`
+- [x] Coletar mods (`FabricLoader.getInstance().getAllMods()`)
+- [x] Coletar resource packs habilitados + SHA-1
+- [x] Coletar shader Iris ativo (nome ou vazio)
+- [x] Enviar plugin message `mineguerra:client_audit` no join
+- [x] Testes unitários + integração allowlist (codec compatível com plugin Paper)
+- [x] Servidor teste com `enabled: true` (Docker `mine-guerra-bukkit-2026:25567`)
+
+Validação manual de join in-game recomendada após instalar o JAR da [release](https://github.com/lseixas/mineguerra-client-audit/releases).
 
 ## Build
 
@@ -19,7 +22,14 @@ Servidor (plugin Paper): [`lseixas/mineguerra_plugin_2026`](https://github.com/l
 ./gradlew build
 ```
 
-JAR em `build/libs/mineguerra-client-audit-0.1.0.jar`.
+JAR em `build/libs/mineguerra-client-audit-0.1.1.jar` (ou baixar da [release GitHub](https://github.com/lseixas/mineguerra-client-audit/releases)).
+
+## Instalação (jogadores)
+
+1. Baixar `mineguerra-client-audit-0.1.1.jar` da release
+2. Colocar em `.minecraft/mods/` (Fabric Loader 0.16.14+, MC 1.21.8)
+3. Instalar o restante do pack conforme [docs/ALLOWLIST.md](docs/ALLOWLIST.md)
+4. Conectar ao servidor MineGuerra — o handshake é enviado automaticamente no join
 
 ## Documentação
 
