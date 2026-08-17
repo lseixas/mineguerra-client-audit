@@ -1,6 +1,7 @@
 package org.lseixas.mineguerra_client_audit;
 
 import net.fabricmc.api.ClientModInitializer;
+import org.lseixas.mineguerra_client_audit.audit.ClientAuditSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +16,7 @@ public final class MineguerraClientAuditMod implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        LOGGER.info("MineGuerra Client Audit carregado (stub — handshake ainda nao implementado).");
-        // TODO: registrar ClientPlayConnectionEvents.JOIN -> ClientAuditSender.send()
+        ClientAuditSender.register();
+        LOGGER.info("MineGuerra Client Audit carregado.");
     }
 }
