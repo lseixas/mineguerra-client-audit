@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "mineguerra-client-audit",
+  "version": "${version}",
+  "name": "MineGuerra Client Audit",
+  "description": "Envia mods, resource packs e shader ao servidor Paper do evento MineGuerra.",
+  "authors": [
+    "MineGuerra"
+  ],
+  "contact": {
+    "homepage": "https://github.com/lseixas/mineguerra-client-audit",
+    "sources": "https://github.com/lseixas/mineguerra-client-audit"
+  },
+  "license": "MIT",
+  "icon": "assets/mineguerra-client-audit/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "org.lseixas.mineguerra_client_audit.MineguerraClientAuditMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.21.8",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "iris": "*"
+  }
+}
