@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Checkout plugin (codec cross-test)
+        uses: actions/checkout@v4
+        with:
+          repository: lseixas/mineguerra_plugin_2026
+          path: mineguerra_plugin_2026
+
+      - name: Build plugin JAR for tests
+        working-directory: mineguerra_plugin_2026
+        run: ./gradlew jar --no-daemon
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build and test
+        run: ./gradlew build --no-daemon
