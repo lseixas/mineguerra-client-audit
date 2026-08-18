@@ -47,7 +47,7 @@ public final class ClientAuditCollector {
         ResourcePackManager manager = client.getResourcePackManager();
         List<ClientAuditPayload.PackEntry> packs = new ArrayList<>();
         for (ResourcePackProfile profile : manager.getEnabledProfiles()) {
-            packs.add(new ClientAuditPayload.PackEntry(profile.getId(), ResourcePackHasher.sha1(profile)));
+            packs.add(new ClientAuditPayload.PackEntry(profile.getId(), ResourcePackHasher.sha1(profile, client.getResourcePackDir())));
         }
         return packs;
     }
