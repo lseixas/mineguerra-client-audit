@@ -32,6 +32,11 @@ final class ResourcePackHasher {
         if (source == ResourcePackSource.BUILTIN || source == ResourcePackSource.SERVER) {
             return new byte[SHA1_LEN];
         }
+        String packId = profile.getId();
+        if (packId == null || !packId.startsWith(FILE_PREFIX)) {
+            // Fabric Mods (id fabric), packs escondidos dos mods, vanilla.
+            return new byte[SHA1_LEN];
+        }
         byte[] fromZip = sha1ZipFile(profile.getId(), resourcePackDir);
         if (fromZip != null) {
             return fromZip;
