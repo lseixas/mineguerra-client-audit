@@ -37,7 +37,7 @@ mode: exact
 expectedMcVersion: "1.21.8"
 ```
 
-Assinatura de mods, 3 shaders e SHA-1 do pack: ver [ALLOWLIST.md](ALLOWLIST.md) e `client-allowlist.yml` no plugin.
+Assinatura de mods, shaders proibidos e SHA-1 do pack: ver [ALLOWLIST.md](ALLOWLIST.md) e `client-allowlist.yml` no plugin.
 
 ## Limitações
 
