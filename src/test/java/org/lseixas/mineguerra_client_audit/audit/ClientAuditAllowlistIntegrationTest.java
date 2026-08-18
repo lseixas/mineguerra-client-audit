@@ -41,9 +41,19 @@ class ClientAuditAllowlistIntegrationTest {
 
     private static final Set<String> REQUIRED_MODS = Set.of("mineguerra-client-audit");
 
-    private static final Set<String> IGNORED_MOD_IDS = Set.of("minecraft", "java", "fabricloader", "mixinextras");
+    private static final Set<String> IGNORED_MOD_IDS = Set.of(
+            "minecraft",
+            "java",
+            "fabricloader",
+            "mixinextras",
+            "cloth-basic-math",
+            "conditional-mixin",
+            "mixinsquared",
+            "transition",
+            "trender"
+    );
 
-    private static final List<String> IGNORED_PREFIXES = List.of("fabric-");
+    private static final List<String> IGNORED_PREFIXES = List.of("fabric-", "com_", "org_", "io_", "net_");
 
     @Test
     void exactAllowlistAcceptsAfterCodecRoundTrip() throws IOException {

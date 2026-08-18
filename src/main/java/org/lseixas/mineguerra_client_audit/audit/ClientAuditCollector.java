@@ -1,6 +1,8 @@
 package org.lseixas.mineguerra_client_audit.audit;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
+import net.fabricmc.loader.api.metadata.ModOrigin;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.resource.ResourcePackManager;
 import net.minecraft.resource.ResourcePackProfile;
@@ -25,6 +27,7 @@ public final class ClientAuditCollector {
                 .orElse("unknown");
 
         List<ClientAuditPayload.ModEntry> mods = FabricLoader.getInstance().getAllMods().stream()
+                .filter(ClientAuditCollector::isTopLevelMod)
                 .map(mod -> new ClientAuditPayload.ModEntry(
                         mod.getMetadata().getId(),
                         mod.getMetadata().getVersion().getFriendlyString()))
@@ -50,5 +53,15 @@ public final class ClientAuditCollector {
             packs.add(new ClientAuditPayload.PackEntry(profile.getId(), ResourcePackHasher.sha1(profile, client.getResourcePackDir())));
         }
         return packs;
+    }
+
+    /**
+     * Jar-in-jar / nested libs (Cloth math, TwelveMonkeys, ANTLR, etc.) nao entram na assinatura.
+     */
+    static boolean isTopLevelMod(ModContainer mod) {
+        if (mod.getContainingMod().isPresent()) {
+            return false;
+        }
+        return mod.getOrigin().getKind() != ModOrigin.Kind.NESTED;
     }
 }
