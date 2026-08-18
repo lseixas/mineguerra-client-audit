@@ -27,15 +27,17 @@ sequenceDiagram
   end
 ```
 
-## Config servidor (`enabled: false` hoje)
+## Config servidor
 
 ```yaml
-enabled: false          # ligar só quando este mod existir
+enabled: true
 timeoutTicks: 100
 bypassPermission: mineguerra.admin
 mode: exact
 expectedMcVersion: "1.21.8"
 ```
+
+Assinatura de mods, 3 shaders e SHA-1 do pack: ver [ALLOWLIST.md](ALLOWLIST.md) e `client-allowlist.yml` no plugin.
 
 ## Limitações
 

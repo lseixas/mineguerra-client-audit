@@ -22,21 +22,21 @@ class ClientAuditAllowlistIntegrationTest {
 
     private static final Set<String> ALLOWED_MODS = Set.of(
             "mineguerra-client-audit",
-            "modmenu",
-            "yet_another_config_lib_v3",
-            "sodium",
-            "lithium",
-            "ferritecore",
-            "entityculling",
-            "immediatelyfast",
-            "moreculling",
-            "dynamic_fps",
-            "krypton",
-            "reeses-sodium-options",
-            "iris",
-            "nochatreports",
+            "cloth-config",
             "debugify",
-            "ok_zoomer"
+            "dynamic_fps",
+            "entityculling",
+            "ferritecore",
+            "immediatelyfast",
+            "iris",
+            "krypton",
+            "lithium",
+            "modmenu",
+            "moreculling",
+            "reeses-sodium-options",
+            "placeholder-api",
+            "yet_another_config_lib_v3",
+            "sodium"
     );
 
     private static final Set<String> REQUIRED_MODS = Set.of("mineguerra-client-audit");
@@ -51,22 +51,22 @@ class ClientAuditAllowlistIntegrationTest {
                 mod("minecraft", "1.21.8"),
                 mod("fabric-api", "0.134.0"),
                 mod("fabric-networking-api-v1", "5.0.3"),
-                mod("mineguerra-client-audit", "0.1.0"),
-                mod("sodium", "0.6.13"),
-                mod("lithium", "0.14.8"),
-                mod("ferritecore", "7.0.2"),
-                mod("entityculling", "1.8.2"),
-                mod("immediatelyfast", "1.8.1"),
-                mod("moreculling", "1.2.1"),
-                mod("dynamic_fps", "3.9.3"),
-                mod("krypton", "0.2.8"),
-                mod("reeses-sodium-options", "1.8.3"),
-                mod("iris", "1.8.8"),
-                mod("modmenu", "12.0.0"),
-                mod("yet_another_config_lib_v3", "3.6.2"),
-                mod("nochatreports", "1.21.8-v2.9.0"),
+                mod("mineguerra-client-audit", "0.1.1"),
+                mod("cloth-config", "17.0.0"),
                 mod("debugify", "1.21.8+1.0"),
-                mod("ok_zoomer", "10.0.0")
+                mod("dynamic_fps", "3.9.3"),
+                mod("entityculling", "1.8.2"),
+                mod("ferritecore", "7.0.2"),
+                mod("immediatelyfast", "1.8.1"),
+                mod("iris", "1.8.8"),
+                mod("krypton", "0.2.8"),
+                mod("lithium", "0.14.8"),
+                mod("modmenu", "12.0.0"),
+                mod("moreculling", "1.2.1"),
+                mod("reeses-sodium-options", "1.8.3"),
+                mod("placeholder-api", "2.6.0"),
+                mod("yet_another_config_lib_v3", "3.6.2"),
+                mod("sodium", "0.6.13")
         ), List.of(new ClientAuditPayload.PackEntry("vanilla", new byte[20])), "");
 
         ClientAuditPayload decoded = ClientAuditCodec.decode(ClientAuditCodec.encode(payload));

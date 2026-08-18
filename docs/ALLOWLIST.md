@@ -1,64 +1,65 @@
 # Allowlist estrita (perfil Guerra)
 
-Política acordada: **só performance + Iris + QoL sem HUD extra**. Modo servidor: `exact` (depois de ignorar internals do Fabric).
-
+Política: **assinatura exact dos ids** (nem extra, nem faltando). Versões **não** são pinadas.  
 Referência no plugin: `mineguerra_plugin_2026/main/resources/client-allowlist.yml`.
 
-## Obrigatório neste mod pack
+## Obrigatório
 
-| Mod | mod id (`fabric.mod.json`) |
-|-----|---------------------------|
-| **MineGuerra Client Audit** (este repo) | `mineguerra-client-audit` |
-| Fabric API | `fabric-api` (ignorado no check: prefixo `fabric-`) |
+| Mod | mod id |
+|-----|--------|
+| **MineGuerra Client Audit** | `mineguerra-client-audit` |
 
-## Performance (instalar no perfil do jogador)
+Fabric API (`fabric-api`) é ignorado no check (prefixo `fabric-`).
 
-| Modrinth | mod id |
-|----------|--------|
-| Sodium | `sodium` |
-| Lithium | `lithium` |
-| FerriteCore | `ferritecore` |
-| Entity Culling | `entityculling` |
-| ImmediatelyFast | `immediatelyfast` |
-| MoreCulling | `moreculling` |
-| Dynamic FPS | `dynamic_fps` |
-| Krypton | `krypton` |
-| Reese's Sodium Options | `reeses-sodium-options` |
+## Mods da assinatura (`allowedMods`)
 
-## Shaders
-
-| Modrinth | mod id |
-|----------|--------|
-| Iris | `iris` |
-
-Shader **packs** (pasta `shaderpacks/`, não são mods): Complementary Unbound, BSL — ok.  
-Banidos por substring no nome: `xray`, `cave finder`, `fullbright`, `wallhack`, `esp`.
-
-## QoL permitido
-
-| Modrinth | mod id |
-|----------|--------|
-| Mod Menu | `modmenu` |
-| YetAnotherConfigLib | `yet_another_config_lib_v3` |
-| No Chat Reports | `nochatreports` |
+| Nome | mod id |
+|------|--------|
+| MineGuerra Client Audit | `mineguerra-client-audit` |
+| Cloth Config API | `cloth-config` |
 | Debugify | `debugify` |
-| ok Zoomer | `ok_zoomer` |
+| Dynamic FPS | `dynamic_fps` |
+| Entity Culling | `entityculling` |
+| FerriteCore | `ferritecore` |
+| ImmediatelyFast | `immediatelyfast` |
+| Iris Shaders | `iris` |
+| Krypton | `krypton` |
+| Lithium | `lithium` |
+| Mod Menu | `modmenu` |
+| MoreCulling | `moreculling` |
+| Reese's Sodium Options | `reeses-sodium-options` |
+| Text Placeholder API | `placeholder-api` |
+| YetAnotherConfigLib | `yet_another_config_lib_v3` |
+| Sodium | `sodium` |
 
-## Proibido (kick se presente)
+`sodium` não veio na lista informal, mas **entra na allowlist**: Iris e Reese's Sodium Options dependem dele. Sem o id, quem instalar o pack levaria kick de mod extra.
 
-- Jade, WTHIT, Light Overlay, AppleSkin, MiniHUD
-- Minimapa (Xaero, JourneyMap, VoxelMap)
-- Distant Horizons
-- Sodium Extra (gamma/fullbright)
-- Indium (obsoleto com Sodium 0.6+)
-- Replay Mod, FreeCam, Meteor, Wurst, etc.
-- Resource packs xray / cave / ESP
+## Shaders permitidos (Iris)
+
+Shader desligado (`""`) é ok. Ligado: só estes (match ignora espaços/`_`/`-`/`.zip` e sufixo de versão):
+
+- Miniature Shader by ukrech
+- Complementary Unbound
+- Complementary Reimagined
+
+Banidos por substring (camada extra): `xray`, `cave finder`, `fullbright`, `wallhack`, `esp`.
 
 ## Resource packs
 
-Hoje: só **vanilla** (+ pack do servidor quando `allowedPackSha1` for preenchido no plugin).  
-Pack do evento: `mineguerra_plugin_2026/resourcepack/MineGuerra_Weapons/` — SHA-1 do zip entra na config depois.
+Só **vanilla/server** + zip **MineGuerra Weapons** (`resourcepack/MineGuerra_Weapons/`).
 
-## O que este mod deve reportar
+SHA-1 do zip (recalcular se as texturas mudarem):
 
-Enviar **todos** os mods carregados (ids + versões), não só os da allowlist. O servidor filtra `minecraft`, `java`, `fabricloader`, `mixinextras` e tudo com prefixo `fabric-`, depois aplica `exact` na lista acima.
+```
+b5d400b5b99d32a7b55ef22beeac475dbd70293b
+```
+
+Qualquer outro pack de arquivo → kick.
+
+## Ignorados no check
+
+`minecraft`, `java`, `fabricloader`, `mixinextras`, prefixo `fabric-`.
+
+## O que este mod reporta
+
+Todos os mods carregados (ids + versões). O servidor filtra internals e aplica `exact` na lista acima.
